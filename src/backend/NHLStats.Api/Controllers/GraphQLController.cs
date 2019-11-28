@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using GraphQL;
 using GraphQL.Types;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NHLStats.Api.Models;
 
@@ -22,6 +23,7 @@ namespace NHLStats.Api.Controllers
         }
 
         [HttpPost]
+        [EnableCors("foo")]
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
         {
             if (query == null) { throw new ArgumentNullException(nameof(query)); }

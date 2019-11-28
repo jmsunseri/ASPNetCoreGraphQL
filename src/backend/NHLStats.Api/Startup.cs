@@ -3,6 +3,7 @@ using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,6 +43,18 @@ namespace NHLStats.Api
             services.AddSingleton<SkaterStatisticType>();
             var sp = services.BuildServiceProvider();
             services.AddSingleton<ISchema>(new NHLStatsSchema(new FuncDependencyResolver(type => sp.GetService(type))));
+
+            services.AddCors(options => {
+                options.AddPolicy("foo", builder => {
+                    builder
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod();
+                });
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +64,8 @@ namespace NHLStats.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("foo");
 
             app.UseGraphiQl();
             app.UseMvc();
