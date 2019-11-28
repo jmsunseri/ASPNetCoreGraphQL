@@ -11,5 +11,6 @@ namespace NHLStats.Core.Data
         Task<Player> GetRandom();
         Task<List<Player>> All();
         Task<Player> Add(Player player);
+        Task<IEnumerable<Player>> Get(string playerName);
     }
 }

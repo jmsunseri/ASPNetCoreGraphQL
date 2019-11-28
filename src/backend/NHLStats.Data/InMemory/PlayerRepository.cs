@@ -18,6 +18,12 @@ namespace NHLStats.Data.InMemory
             return Task.FromResult(_players.FirstOrDefault(p => p.Id == id));
         }
 
+        public Task<IEnumerable<Player>> Get(string playerName)
+        {
+            playerName = playerName.ToUpper();
+            return Task.FromResult(_players.Where(p => p.Name.ToUpper().Contains(playerName)));
+        }
+
         public Task<Player> GetRandom()
         {
             throw new System.NotImplementedException();

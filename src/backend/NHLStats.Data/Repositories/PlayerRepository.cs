@@ -24,6 +24,12 @@ namespace NHLStats.Data.Repositories
             return await _db.Players.FirstOrDefaultAsync(p => p.Id == id);
         }
 
+        public async Task<IEnumerable<Player>> Get(string playerName)
+        {
+            playerName = playerName.ToUpper();
+            return await _db.Players.Where(p => p.Name.ToUpper().Contains(playerName)).ToArrayAsync();
+        }
+
         public async Task<Player> GetRandom()
         {
             return await _db.Players.OrderBy(o => Guid.NewGuid()).FirstOrDefaultAsync();

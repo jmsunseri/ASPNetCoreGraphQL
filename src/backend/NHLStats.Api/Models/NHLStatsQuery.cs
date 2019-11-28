@@ -22,6 +22,11 @@ namespace NHLStats.Api.Models
             Field<ListGraphType<PlayerType>>(
                 "players",
                 resolve: context => contextServiceLocator.PlayerRepository.All());
+
+            Field<ListGraphType<PlayerType>>(
+                "playersByName",
+                arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "playerName" }),
+                resolve: context => contextServiceLocator.PlayerRepository.Get(context.GetArgument<string>("playerName")));
         }
     }
 }
