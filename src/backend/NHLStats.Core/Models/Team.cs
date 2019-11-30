@@ -1,5 +1,4 @@
-﻿ 
- 
+﻿using System.Collections.Generic;
 
 namespace NHLStats.Core.Models
 {
@@ -8,5 +7,6 @@ namespace NHLStats.Core.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Abbreviation { get; set; }
+
     }
 }

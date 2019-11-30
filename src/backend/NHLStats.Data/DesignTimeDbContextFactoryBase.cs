@@ -62,10 +62,6 @@ namespace NHLStats.Data
             var optionsBuilder =
                  new DbContextOptionsBuilder<TContext>();
 
-            Console.WriteLine(
-                "MyDesignTimeDbContextFactory.Create(string): Connection string: {0}",
-                connectionString);
-
             optionsBuilder.UseSqlServer(connectionString);
 
             var options = optionsBuilder.Options;

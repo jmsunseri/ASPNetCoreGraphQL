@@ -14,7 +14,7 @@ namespace NHLStats.Core.Models
         public string Height { get; set; }
         public int WeightLbs { get; set; }
 
-        public List<SkaterStatistic> SkaterStatistics { get; set; }
+        
     }
 }
 

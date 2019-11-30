@@ -1,13 +1,14 @@
 ﻿ 
  
  using GraphQL.Types;
+using NHLStats.Api.Helpers;
 using NHLStats.Core.Models;
 
 namespace NHLStats.Api.Models
 {
     public class SkaterStatisticType : ObjectGraphType<SkaterStatistic>
     {
-        public SkaterStatisticType()
+        public SkaterStatisticType(ContextServiceLocator contextServiceLocator)
         {
             Field(x => x.Id);
             Field(x => x.SeasonId);
@@ -20,6 +21,10 @@ namespace NHLStats.Api.Models
             Field<IntGraphType>("assists", resolve: context => context.Source.Assists);
             Field<IntGraphType>("points", resolve: context => context.Source.Points);
             Field<IntGraphType>("plusMinus", resolve: context => context.Source.PlusMinus);
+
+            Field<LeagueType>("leagueObject",
+                resolve: context => context.Source.League);
+
         }
     }
 }

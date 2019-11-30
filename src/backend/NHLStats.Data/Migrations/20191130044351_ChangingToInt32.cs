@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NHLStats.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class ChangingToInt32 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,7 +81,7 @@ namespace NHLStats.Data.Migrations
                     Assists = table.Column<int>(nullable: false),
                     Points = table.Column<int>(nullable: false),
                     PenaltyMinutes = table.Column<int>(nullable: false),
-                    PlusMinus = table.Column<short>(nullable: true)
+                    PlusMinus = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -140,13 +139,15 @@ namespace NHLStats.Data.Migrations
                 name: "SkaterStatistics");
 
             migrationBuilder.DropTable(
+                name: "Seasons");
+
+            migrationBuilder.DropTable(
                 name: "Leagues");
 
             migrationBuilder.DropTable(
                 name: "Players");
 
-            migrationBuilder.DropTable(
-                name: "Seasons");
+            
 
             migrationBuilder.DropTable(
                 name: "Teams");

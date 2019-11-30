@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import PlayersTableRow from "./PlayersTableRow";
 
 const GET_ALL_PLAYERS = gql`
   {
@@ -26,6 +27,7 @@ const PlayersTable = () => {
     <table className="table table-striped" aria-labelledby="tabelLabel">
       <thead>
         <tr>
+          <th></th>
           <th>Name</th>
           <th>Birthday</th>
           <th>Birth Place</th>
@@ -35,13 +37,15 @@ const PlayersTable = () => {
       </thead>
       <tbody>
         {data.players.map(player => (
-          <tr key={player.id}>
-            <td>{player.name}</td>
-            <td>{player.birthDate}</td>
-            <td>{player.birthPlace}</td>
-            <td>{player.height}</td>
-            <td>{player.weightLbs}</td>
-          </tr>
+          <PlayersTableRow
+            key={player.id}
+            id={player.id}
+            name={player.name}
+            birthDate={player.birthDate}
+            birthPlace={player.birthPlace}
+            height={player.height}
+            weight={player.weightLbs}
+          ></PlayersTableRow>
         ))}
       </tbody>
     </table>

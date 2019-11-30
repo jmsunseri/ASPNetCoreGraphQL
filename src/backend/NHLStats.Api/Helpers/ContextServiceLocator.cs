@@ -11,6 +11,8 @@ namespace NHLStats.Api.Helpers
         public IPlayerRepository PlayerRepository => _httpContextAccessor.HttpContext.RequestServices.GetRequiredService<IPlayerRepository>();
         public ISkaterStatisticRepository SkaterStatisticRepository => _httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ISkaterStatisticRepository>();
 
+        public ILeagueRepository LeagueRepository => _httpContextAccessor.HttpContext.RequestServices.GetRequiredService<ILeagueRepository>();
+
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public ContextServiceLocator(IHttpContextAccessor httpContextAccessor)

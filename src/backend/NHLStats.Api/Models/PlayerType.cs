@@ -3,6 +3,7 @@ using GraphQL.Types;
 using NHLStats.Api.Helpers;
 using NHLStats.Core.Data;
 using NHLStats.Core.Models;
+using System.Linq;
 
 namespace NHLStats.Api.Models
 {
@@ -19,6 +20,8 @@ namespace NHLStats.Api.Models
             Field<ListGraphType<SkaterStatisticType>>("skaterSeasonStats",
                 arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }),
                 resolve: context => contextServiceLocator.SkaterStatisticRepository.Get(context.Source.Id), description: "Player's skater stats");
+            Field<SkaterStatisticTotalsType>("careerStats",
+                 resolve: context => contextServiceLocator.SkaterStatisticRepository.GetCareerStats(context.Source.Id), description: "Player's career stats");
         }
     }
 }

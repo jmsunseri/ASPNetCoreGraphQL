@@ -3,29 +3,29 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NHLStats.Data;
 
 namespace NHLStats.Data.Migrations
 {
     [DbContext(typeof(NHLStatsContext))]
-    [Migration("20180331173608_initial")]
-    partial class initial
+    [Migration("20191130044351_ChangingToInt32")]
+    partial class ChangingToInt32
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.0-preview1-28290")
+                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("NHLStats.Core.Models.League", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Abbreviation");
 
@@ -39,7 +39,8 @@ namespace NHLStats.Data.Migrations
             modelBuilder.Entity("NHLStats.Core.Models.Player", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("BirthDate");
 
@@ -59,7 +60,8 @@ namespace NHLStats.Data.Migrations
             modelBuilder.Entity("NHLStats.Core.Models.Season", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name");
 
@@ -71,23 +73,24 @@ namespace NHLStats.Data.Migrations
             modelBuilder.Entity("NHLStats.Core.Models.SkaterStatistic", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<ushort>("Assists");
+                    b.Property<int>("Assists");
 
-                    b.Property<ushort>("GamesPlayed");
+                    b.Property<int>("GamesPlayed");
 
-                    b.Property<ushort>("Goals");
+                    b.Property<int>("Goals");
 
                     b.Property<int>("LeagueId");
 
-                    b.Property<ushort>("PenaltyMinutes");
+                    b.Property<int>("PenaltyMinutes");
 
                     b.Property<int>("PlayerId");
 
-                    b.Property<short?>("PlusMinus");
+                    b.Property<int?>("PlusMinus");
 
-                    b.Property<ushort>("Points");
+                    b.Property<int>("Points");
 
                     b.Property<int>("SeasonId");
 
@@ -109,7 +112,8 @@ namespace NHLStats.Data.Migrations
             modelBuilder.Entity("NHLStats.Core.Models.Team", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Abbreviation");
 
@@ -127,8 +131,8 @@ namespace NHLStats.Data.Migrations
                         .HasForeignKey("LeagueId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("NHLStats.Core.Models.Player")
-                        .WithMany("SkaterStatistics")
+                    b.HasOne("NHLStats.Core.Models.Player", "Player")
+                        .WithMany()
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade);
 

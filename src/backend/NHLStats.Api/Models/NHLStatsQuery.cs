@@ -27,6 +27,20 @@ namespace NHLStats.Api.Models
                 "playersByName",
                 arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "playerName" }),
                 resolve: context => contextServiceLocator.PlayerRepository.Get(context.GetArgument<string>("playerName")));
+
+             Field<ListGraphType<LeagueType>>(
+                "leagues",
+                resolve: context => contextServiceLocator.LeagueRepository.All());
+            
+            
+            Field<ListGraphType<SkaterStatisticTotalsType>>(
+                "playersCareerStats",
+                resolve: context => contextServiceLocator.SkaterStatisticRepository.GetAllCareerStats());
+
+            Field<SkaterStatisticTotalsType>(
+                "playerCareerStats",
+                arguments: new QueryArguments(new QueryArgument<IntGraphType> { Name = "id" }),
+                resolve: context => contextServiceLocator.SkaterStatisticRepository.GetCareerStats(context.GetArgument<int>("id")));
         }
     }
 }
