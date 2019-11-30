@@ -11,7 +11,7 @@ export default class App extends Component {
   static displayName = App.name;
 
   client = new ApolloClient({
-    uri: "http://localhost:5000/graphql"
+    uri: "https://justin-nhl-stats.azurewebsites.net/graphql"
   });
 
   render() {
