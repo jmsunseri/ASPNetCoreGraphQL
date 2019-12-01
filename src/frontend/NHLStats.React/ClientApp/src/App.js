@@ -11,10 +11,15 @@ export default class App extends Component {
   static displayName = App.name;
 
   client = new ApolloClient({
-    uri: "https://justin-nhl-stats.azurewebsites.net/graphql"
+    uri:
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:5000/graphql"
+        : "https://justin-nhl-stats.azurewebsites.net/graphql"
   });
 
   render() {
+    console.log(process.env.NODE_ENV);
+
     return (
       <ApolloProvider client={this.client}>
         <Layout>

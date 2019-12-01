@@ -22,13 +22,11 @@ const PlayersTableRow = props => {
       </tr>
       {expanded ? (
         <tr style={{ backgroundColor: "white" }}>
+          <td></td>
           <td
-            colSpan="6"
+            colSpan="5"
             style={{
-              paddingRight: "0px",
-              paddingLeft: "25px",
-              paddingTop: "0px",
-              paddingBottom: "0px"
+              padding: "0px"
             }}
           >
             <CareerStateTable id={props.id} />

@@ -9,8 +9,8 @@ namespace NHLStats.Core.Data
     {
         Task<Player> Get(int id);
         Task<Player> GetRandom();
-        Task<List<Player>> All();
+        Task<PagedList<Player>> All(int pageSize, int page);
         Task<Player> Add(Player player);
-        Task<IEnumerable<Player>> Get(string playerName);
+        Task<PagedList<Player>> Get(string playerName, int pageSize = 5, int page = 1);
     }
 }

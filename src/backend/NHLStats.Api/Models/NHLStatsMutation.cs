@@ -2,7 +2,6 @@
 
 using GraphQL.Types;
 using NHLStats.Api.Helpers;
-using NHLStats.Core.Data;
 using NHLStats.Core.Models;
 
 namespace NHLStats.Api.Models

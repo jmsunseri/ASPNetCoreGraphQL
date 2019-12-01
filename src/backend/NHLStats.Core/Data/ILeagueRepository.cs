@@ -9,7 +9,6 @@ namespace NHLStats.Core.Data
     {
         Task<League> Get(int id);
         Task<List<League>> All();
-
         Task<League> Add(League league);
     }
 }

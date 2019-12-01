@@ -1,8 +1,5 @@
-﻿
-using GraphQL.Types;
+﻿using GraphQL.Types;
 using NHLStats.Api.Helpers;
-using NHLStats.Core.Data;
-
 
 namespace NHLStats.Api.Models
 {
@@ -19,14 +16,28 @@ namespace NHLStats.Api.Models
                 "randomPlayer",
                 resolve: context => contextServiceLocator.PlayerRepository.GetRandom());
 
-            Field<ListGraphType<PlayerType>>(
-                "players",
-                resolve: context => contextServiceLocator.PlayerRepository.All());
+            Field<PlayerListType>(
+                "playersList",
+                arguments: new QueryArguments(
+                    new QueryArgument<IntGraphType> { Name = "pageSize" }, 
+                    new QueryArgument<IntGraphType> { Name = "page" }
+                    ),
+                resolve: context => contextServiceLocator.PlayerRepository.All(
+                    context.GetArgument<int>("pageSize"), 
+                    context.GetArgument<int>("page")));
 
-            Field<ListGraphType<PlayerType>>(
-                "playersByName",
-                arguments: new QueryArguments(new QueryArgument<StringGraphType> { Name = "playerName" }),
-                resolve: context => contextServiceLocator.PlayerRepository.Get(context.GetArgument<string>("playerName")));
+            Field<PlayerListType>(
+                "playersListByName",
+                arguments: new QueryArguments(
+                    new QueryArgument<StringGraphType> { Name = "playerName" },
+                    new QueryArgument<IntGraphType> { Name = "pageSize" }, 
+                    new QueryArgument<IntGraphType> { Name = "page" }
+                    ),
+                resolve: context => contextServiceLocator.PlayerRepository.Get(
+                    context.GetArgument<string>("playerName"),
+                    context.GetArgument<int>("pageSize"), 
+                    context.GetArgument<int>("page")
+                    ));
 
              Field<ListGraphType<LeagueType>>(
                 "leagues",

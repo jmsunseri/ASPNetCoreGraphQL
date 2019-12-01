@@ -1,7 +1,6 @@
 ﻿
  
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -24,10 +23,18 @@ namespace NHLStats.Data.Repositories
             return await _db.Players.FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public async Task<IEnumerable<Player>> Get(string playerName)
+        public async Task<PagedList<Player>> Get(string playerName, int pageSize = 5, int page = 1)
         {
             playerName = playerName.ToUpper();
-            return await _db.Players.Where(p => p.Name.ToUpper().Contains(playerName)).ToArrayAsync();
+
+            return  await _db.Players
+            .Where(p => p.Name.ToUpper().Contains(playerName))
+            .GroupBy(p => true)
+            .Select(g => new PagedList<Player>() { 
+                TotalPages = Convert.ToInt32(Math.Ceiling(g.Count() / Convert.ToDouble(pageSize))),
+                Enumerable = g.OrderBy(x => x.Id).Skip((page -1) * pageSize).Take(pageSize)
+                } )
+            .SingleAsync();
         }
 
         public async Task<Player> GetRandom()
@@ -35,9 +42,15 @@ namespace NHLStats.Data.Repositories
             return await _db.Players.OrderBy(o => Guid.NewGuid()).FirstOrDefaultAsync();
         }
 
-        public async Task<List<Player>> All()
+        public async Task<PagedList<Player>> All(int pageSize = 5, int page = 1)
         {
-            return await _db.Players.ToListAsync();
+            return  await _db.Players
+            .GroupBy(p => true)
+            .Select(g => new PagedList<Player>() { 
+                TotalPages = Convert.ToInt32(Math.Ceiling(g.Count() / Convert.ToDouble(pageSize))),
+                Enumerable = g.OrderBy(x => x.Id).Skip((page -1) * pageSize).Take(pageSize)
+                } )
+            .SingleAsync();
         }
 
         public async Task<Player> Add(Player player)

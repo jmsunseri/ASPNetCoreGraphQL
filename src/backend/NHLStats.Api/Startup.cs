@@ -41,6 +41,7 @@ namespace NHLStats.Api
             services.AddSingleton<NHLStatsMutation>();
             services.AddSingleton<SkaterStatisticTotalsType>();
             services.AddSingleton<PlayerType>();
+            services.AddSingleton<PlayerListType>();
             services.AddSingleton<LeagueType>();
             services.AddSingleton<PlayerInputType>();
             services.AddSingleton<SkaterStatisticType>();
