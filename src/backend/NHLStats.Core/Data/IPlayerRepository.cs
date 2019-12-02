@@ -8,6 +8,8 @@ namespace NHLStats.Core.Data
     public interface IPlayerRepository
     {
         Task<Player> Get(int id);
+
+        Task<int> Delete(int id);
         Task<Player> GetRandom();
         Task<PagedList<Player>> All(int pageSize, int page);
         Task<Player> Add(Player player);

@@ -3,6 +3,9 @@ import { Route } from "react-router";
 import { Layout } from "./components/Layout";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "flexboxgrid/css/flexboxgrid.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import "./custom.css";
 import Hockey from "./components/Hockey";
@@ -18,8 +21,6 @@ export default class App extends Component {
   });
 
   render() {
-    console.log(process.env.NODE_ENV);
-
     return (
       <ApolloProvider client={this.client}>
         <Layout>

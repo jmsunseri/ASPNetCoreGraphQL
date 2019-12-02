@@ -1,9 +1,10 @@
 import React from "react";
 import PlayersTableRow from "./PlayersTableRow";
+import { Table } from "react-bootstrap";
 
 const PlayersTable = props => {
   return (
-    <table className="table table-striped" aria-labelledby="tabelLabel">
+    <Table striped border="true" hover>
       <thead>
         <tr>
           <th></th>
@@ -12,6 +13,7 @@ const PlayersTable = props => {
           <th>Birth Place</th>
           <th>Height</th>
           <th>Weight (Lbs)</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -24,10 +26,11 @@ const PlayersTable = props => {
             birthPlace={player.birthPlace}
             height={player.height}
             weight={player.weightLbs}
+            onDelete={props.onDelete}
           ></PlayersTableRow>
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 };
 

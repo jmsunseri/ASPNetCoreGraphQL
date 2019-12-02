@@ -1,14 +1,16 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 const PlusButton = props => {
   return (
-    <button
+    <Button
+      variant="outline-primary"
       onClick={() => {
         props.clickHandler(!props.expanded);
       }}
     >
       {props.expanded ? "-" : "+"}
-    </button>
+    </Button>
   );
 };
 

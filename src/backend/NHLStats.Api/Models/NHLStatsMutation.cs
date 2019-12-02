@@ -10,7 +10,7 @@ namespace NHLStats.Api.Models
     {
         public NHLStatsMutation(ContextServiceLocator contextServiceLocator)
         {
-            Name = "CreatePlayerMutation";
+            Name = "PlayerMutation";
 
             Field<PlayerType>(
                 "createPlayer",
@@ -21,6 +21,17 @@ namespace NHLStats.Api.Models
                 {
                     var player = context.GetArgument<Player>("player");
                     return contextServiceLocator.PlayerRepository.Add(player);
+                });
+            
+            Field<IntGraphType>(
+                "deletePlayer",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id" }
+                ),
+                resolve: context =>
+                {
+                    var id = context.GetArgument<int>("id");
+                    return contextServiceLocator.PlayerRepository.Delete(id);
                 });
         }
     }

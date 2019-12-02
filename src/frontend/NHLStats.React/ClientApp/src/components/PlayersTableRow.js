@@ -1,9 +1,26 @@
 import React, { useState } from "react";
 import PlusButton from "./PlusButton";
 import CareerStateTable from "./CareerStatsTable";
+import { Button } from "react-bootstrap";
+import { useMutation } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
 const PlayersTableRow = props => {
   const [expanded, setExpanded] = useState(false);
+
+  const DELETE_PLAYER = gql`
+    mutation PlayerMutation($id: Int!) {
+      deletePlayer(id: $id)
+    }
+  `;
+
+  const deletePlayer = id => {
+    delPlayer({ variables: { id } }).then(() => {
+      props.onDelete(id);
+    });
+  };
+
+  const [delPlayer, { data }] = useMutation(DELETE_PLAYER);
 
   return (
     <>
@@ -19,12 +36,22 @@ const PlayersTableRow = props => {
         <td>{props.birthPlace}</td>
         <td>{props.height}</td>
         <td>{props.weight}</td>
+        <td>
+          <Button
+            variant="outline-primary"
+            onClick={() => {
+              deletePlayer(props.id);
+            }}
+          >
+            <i className="far fa-trash-alt"></i>
+          </Button>
+        </td>
       </tr>
       {expanded ? (
         <tr style={{ backgroundColor: "white" }}>
           <td></td>
           <td
-            colSpan="5"
+            colSpan="6"
             style={{
               padding: "0px"
             }}

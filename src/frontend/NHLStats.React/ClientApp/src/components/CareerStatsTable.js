@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import { Table } from "react-bootstrap";
 
 const GET_CAREER_STATS = gql`
   query($id: Int) {
@@ -25,11 +26,7 @@ const CareerStateTable = props => {
   ) : error ? (
     <p>Error :(</p>
   ) : (
-    <table
-      style={{ margin: "0px" }}
-      className="table table-striped"
-      aria-labelledby="tabelLabel"
-    >
+    <Table style={{ margin: "0px" }} size="sm" borderless>
       <thead>
         <tr style={{ backgroundColor: "white" }}>
           <th>Goals</th>
@@ -50,7 +47,7 @@ const CareerStateTable = props => {
           <td>{data.playerCareerStats.penaltyMinutes}</td>
         </tr>
       </tbody>
-    </table>
+    </Table>
   );
 };
 
