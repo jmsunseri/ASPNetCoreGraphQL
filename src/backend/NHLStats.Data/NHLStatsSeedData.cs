@@ -2,7 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NHLStats.Core.Models;
+using NHLStats.Players;
+using NHLStats.SkaterStats;
+using NHLStats.Seasons;
+using NHLStats.Teams;
+using NHLStats.Leagues;
 
 namespace NHLStats.Data
 {

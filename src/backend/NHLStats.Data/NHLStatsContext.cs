@@ -2,6 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using NHLStats.Core.Models;
 
+using NHLStats.Seasons;
+using NHLStats.Leagues;
+using NHLStats.Teams;
+using NHLStats.SkaterStats;
+using NHLStats.Players;
+
 namespace NHLStats.Data
 {
     public sealed class NHLStatsContext : DbContext

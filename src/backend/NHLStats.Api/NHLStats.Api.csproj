@@ -12,9 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="graphiql" Version="1.2.0" />
-    <PackageReference Include="GraphQL" Version="2.4.0" />
+    <PackageReference Include="GraphQL" Version="3.0.0-preview-1352" />
+    <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="3.5.0-alpha0027" />
+    <PackageReference Include="GraphQL.Server.Ui.Playground" Version="3.5.0-alpha0027" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +28,13 @@
   <ItemGroup>
     <ProjectReference Include="..\NHLStats.Core\NHLStats.Core.csproj" />
     <ProjectReference Include="..\NHLStats.Data\NHLStats.Data.csproj" />
+    <ProjectReference Include="..\NHLStats.Player\NHLStats.Player.csproj" />
+    <ProjectReference Include="..\NHLStats.Player.Data\NHLStats.Player.Data.csproj" />
+    <ProjectReference Include="..\NHLStats.League\NHLStats.League.csproj" />
+    <ProjectReference Include="..\NHLStats.League.Data\NHLStats.League.Data.csproj" />
+    <ProjectReference Include="..\NHLStats.Season\NHLStats.Season.csproj" />
+    <ProjectReference Include="..\NHLStats.SkaterStats\NHLStats.SkaterStats.csproj" />
+    <ProjectReference Include="..\NHLStats.SkaterStats.Data\NHLStats.SkaterStats.Data.csproj" />
   </ItemGroup>
 
 </Project>

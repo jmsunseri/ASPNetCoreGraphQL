@@ -16,6 +16,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NHLStats.Core\NHLStats.Core.csproj" />
+    <ProjectReference Include="..\NHLStats.Player\NHLStats.Player.csproj" />
+    <ProjectReference Include="..\NHLStats.League\NHLStats.League.csproj" />
+    <ProjectReference Include="..\NHLStats.Season\NHLStats.Season.csproj" />
+    <ProjectReference Include="..\NHLStats.SkaterStats\NHLStats.SkaterStats.csproj" />
   </ItemGroup>
   
   <ItemGroup>
