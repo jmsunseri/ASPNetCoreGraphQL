@@ -1,0 +1,11 @@
+{
+  "name": "@fv-components/text-field",
+  "version": "0.1.0",
+  "main": "src/TextField.tsx",
+  "license": "MIT",
+  "dependencies": {
+    "@fv-components/theme": "^0.1.0",
+    "@material/react-text-field": "^0.15.0",
+    "react": "^16.8.6"
+  }
+}

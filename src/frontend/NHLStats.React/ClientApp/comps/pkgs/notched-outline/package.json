@@ -1,0 +1,10 @@
+{
+  "name": "@fv-components/notched-outline",
+  "version": "0.1.0",
+  "main": "src/NotchedOutline.tsx",
+  "dependencies": {
+    "@fv-components/theme": "^0.1.0",
+    "@material/react-notched-outline": "^0.15.0",
+    "react": "^16.8.6"
+  }
+}

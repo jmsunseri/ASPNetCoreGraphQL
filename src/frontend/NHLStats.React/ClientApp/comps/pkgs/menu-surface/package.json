@@ -1,0 +1,12 @@
+{
+  "name": "@fv-components/menu-surface",
+  "version": "0.1.0",
+  "main": "src/MenuSurface.tsx",
+  "license": "MIT",
+  "dependencies": {
+    "@fv-components/theme": "^0.1.0",
+    "@material/react-menu-surface": "^0.15.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}

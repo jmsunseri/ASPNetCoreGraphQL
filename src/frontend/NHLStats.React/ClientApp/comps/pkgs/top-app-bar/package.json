@@ -1,0 +1,12 @@
+{
+  "name": "@fv-components/top-app-bar",
+  "version": "0.1.0",
+  "main": "src/TopAppBar.tsx",
+  "license": "MIT",
+  "dependencies": {
+    "@fv-components/theme": "^0.1.0",
+    "@material/react-material-icon": "^0.15.0",
+    "@material/react-top-app-bar": "^0.15.0",
+    "react": "^16.8.6"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@fv-components/dialog",
+  "version": "0.1.0",
+  "main": "src/Dialog.tsx",
+  "dependencies": {
+    "@fv-components/theme": "^0.1.0",
+    "@material/react-dialog": "^0.15.0",
+    "react": "^16.8.6"
+  }
+}

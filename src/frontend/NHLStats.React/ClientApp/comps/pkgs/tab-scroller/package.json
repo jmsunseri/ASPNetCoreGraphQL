@@ -1,0 +1,10 @@
+{
+  "name": "@fv-components/tab-scroller",
+  "version": "0.1.0",
+  "main": "src/TabScroller.tsx",
+  "dependencies": {
+    "@fv-components/theme": "^0.1.0",
+    "@material/react-tab-scroller": "^0.15.0",
+    "react": "^16.8.6"
+  }
+}

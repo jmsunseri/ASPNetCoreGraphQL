@@ -1,0 +1,9 @@
+@import "node_modules/@fv-components/theme/src/_index.scss";
+@import "@material/ripple/mdc-ripple.scss";
+
+.root {
+  @include mdc-ripple-surface;
+  @include mdc-ripple-radius-bounded;
+  @include mdc-states;
+  overflow: hidden;
+}

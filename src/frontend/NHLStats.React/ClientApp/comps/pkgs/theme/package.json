@@ -1,0 +1,10 @@
+{
+  "name": "@fv-components/theme",
+  "version": "0.1.0",
+  "main": "src/_index.scss",
+  "license": "MIT",
+  "dependencies": {
+    "@material/react-text-field": "^0.15.0",
+    "react": "^16.8.6"
+  }
+}

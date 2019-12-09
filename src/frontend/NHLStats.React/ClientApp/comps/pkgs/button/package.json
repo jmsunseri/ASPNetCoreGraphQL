@@ -1,0 +1,11 @@
+{
+  "name": "@fv-components/button",
+  "version": "0.1.0",
+  "main": "src/Button.tsx",
+  "license": "MIT",
+  "dependencies": {
+    "@fv-components/theme": "^0.1.0",
+    "@material/react-button": "^0.15.0",
+    "react": "^16.8.6"
+  }
+}

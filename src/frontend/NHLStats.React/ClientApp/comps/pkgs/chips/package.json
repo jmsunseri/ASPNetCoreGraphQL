@@ -1,0 +1,10 @@
+{
+  "name": "@fv-components/chips",
+  "version": "0.1.0",
+  "main": "src/Chips.tsx",
+  "dependencies": {
+    "@fv-components/theme": "^0.1.0",
+    "@material/react-chips": "^0.15.0",
+    "react": "^16.8.6"
+  }
+}

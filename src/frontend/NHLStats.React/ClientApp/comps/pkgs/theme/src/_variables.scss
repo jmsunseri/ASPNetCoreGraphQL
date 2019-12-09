@@ -1,0 +1,49 @@
+/* fv color vars */
+$fv-color-grey-dark: #444444; // dark grey
+$fv-color-grey: #909084; // grey 
+$fv-color-grey-light: #BFBFB2; // light grey
+$fv-color-grey-lighter: #DFDFCE; // lighter grey
+$fv-color-grey-lightest: #F3F3ED; // almost white
+
+$fv-color-blue-dark: #005776; // dark blue
+$fv-color-blue-dark-alpha-light: rgba($fv-color-blue-dark, .5);
+$fv-color-blue-dark-alpha-lighter: rgba($fv-color-blue-dark, .2);
+$fv-color-blue-light: #428BCA; // light blue
+
+$fv-color-red-dark: #860A0E; // dark red
+
+$fv-color-orange-dark: #D45521; // dark orange
+
+$fv-color-gold-dark: #9B8210; // gold
+
+$fv-color-teal: #50A3A5; // teal
+$fv-color-teal-light: #99CCCC; // light teal
+
+/* fv font-size vars */
+$fv-font-size-large: 20px;
+$fv-font-size-default: 16px;
+$fv-font-size-small: 14px;
+$fv-font-size-smaller: 12px;
+
+/* fv font-weight vars */
+$fv-font-weight-bold: 500;
+$fv-font-weight-bolder: 600;
+
+/* fv spacing vars */
+$fv-spacing-small: 5px;
+$fv-spacing-default: 8px;
+$fv-spacing-large: 10px;
+
+/* fv ui vars */
+$fv-border-width-default: 1px;
+$fv-border-style-default: solid;
+$fv-border-width-style-default: $fv-border-width-default $fv-border-style-default;
+$fv-border-default: $fv-border-width-style-default $fv-color-grey;
+
+$fv-border-radius-default: 5px;
+
+/* Setting MCW color vars */
+$mdc-theme-primary: $fv-color-blue-dark;
+$mdc-theme-secondary: $fv-color-teal-light;
+$mdc-theme-on-primary: $fv-color-grey-lightest;
+$mdc-theme-on-secondary: $fv-color-grey-dark;
