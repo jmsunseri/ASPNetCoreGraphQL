@@ -32,12 +32,8 @@
 
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install meta" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install npx" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npx meta git update" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="cd .\components\packages\" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="ls" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="cd ..\..\" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install -g meta" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="meta git update" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="yarn install" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="yarn build" />
 
