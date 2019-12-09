@@ -34,6 +34,7 @@
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install -g meta" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="meta git update" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="cat .\components\package.json" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="yarn install" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="yarn build" />
 
