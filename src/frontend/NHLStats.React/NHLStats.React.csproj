@@ -35,6 +35,8 @@
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install meta" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install npx" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npx meta git update" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="pwd" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="ls" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="yarn install" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="yarn build" />
 
