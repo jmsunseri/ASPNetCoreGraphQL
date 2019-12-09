@@ -26,7 +26,8 @@ namespace NHLStats.Players.Data.EF
         public async Task<int> Delete(int id)
         {
             _db.Entry(new Player(){ Id = id }).State = EntityState.Deleted;
-            return await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
+            return id;
         }
 
         public async Task<PagedList<Player>> Get(string playerName, int pageSize = 5, int page = 1)

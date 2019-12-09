@@ -1,7 +1,6 @@
-import React from "react";
+import React, { FC } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
-import { Table } from "react-bootstrap";
 import { apolloClients } from "../../../../App";
 
 const GET_CAREER_STATS = gql`
@@ -17,7 +16,13 @@ const GET_CAREER_STATS = gql`
   }
 `;
 
-const CareerStateTable = props => {
+interface CareerStateTableProps {
+  id: number;
+}
+
+const CareerStateTable: FC<CareerStateTableProps> = (
+  props: CareerStateTableProps
+) => {
   const { loading, error, data } = useQuery(GET_CAREER_STATS, {
     variables: { id: props.id },
     client: apolloClients.statsClient
@@ -28,7 +33,7 @@ const CareerStateTable = props => {
   ) : error ? (
     <p>Error :(</p>
   ) : (
-    <Table style={{ margin: "0px" }} size="sm" borderless>
+    <table style={{ margin: "0px", width: "100%" }}>
       <thead>
         <tr style={{ backgroundColor: "white" }}>
           <th>Goals</th>
@@ -60,7 +65,7 @@ const CareerStateTable = props => {
           </tr>
         )}
       </tbody>
-    </Table>
+    </table>
   );
 };
 
