@@ -32,10 +32,10 @@
 
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install -g meta" />
+    <!-- <Exec WorkingDirectory="$(SpaRoot)" Command="npm install -g meta" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install -g meta" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="meta git clone https://github.com:Filevine/components.git" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="meta git status" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="meta git status" /> -->
     <Exec WorkingDirectory="$(SpaRoot)" Command="yarn install" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="yarn build" />
 
