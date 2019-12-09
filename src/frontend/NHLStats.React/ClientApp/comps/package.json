@@ -1,0 +1,9 @@
+{
+  "name": "components",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": "git@github.com:Filevine/components.git",
+  "author": "Ryan Cline <rcline@filevine.com>",
+  "license": "MIT",
+  "private": true
+}

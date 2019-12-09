@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "components/packages/*"
+    "comps/packages/*"
   ],
   "dependencies": {
     "babel-eslint": "^10.0.3",
