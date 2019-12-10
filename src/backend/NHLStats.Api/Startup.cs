@@ -21,6 +21,7 @@ using NHLStats.SkaterStats;
 using NHLStats.SkaterStats.Data.EF;
 using NHLStats.SkaterStats.Data.GraphQL;
 using Swashbuckle.AspNetCore.Swagger;
+using NHLStats.Core.Models;
 using System.Linq;
 
 namespace NHLStats.Api
@@ -54,19 +55,19 @@ namespace NHLStats.Api
             services.AddSingleton<LeagueQuery>();
             services.AddSingleton<SkaterStatisticTotalsType>();
             services.AddSingleton<PlayerType>();
-            services.AddSingleton<PlayerListType>();
+            services.AddSingleton<PagedListType<Player,PlayerType>>();
             services.AddSingleton<LeagueType>();
             services.AddSingleton<PlayerInputType>();
             services.AddSingleton<SkaterStatisticType>();
-            services.AddSingleton<PlayerSchema>();
-            services.AddSingleton<LeagueSchema>();
-            services.AddSingleton<SkaterStatsSchema>();
+            services.AddSingleton<GraphSchema<PlayerQuery,PlayerMutation>>();
+            services.AddSingleton<QueryGraphSchema<LeagueQuery>>();
+            services.AddSingleton<QueryGraphSchema<SkaterStatsQuery>>();
             services.AddSingleton<IDocumentWriter, DocumentWriter>();
-
             services.AddGraphQL()
-                .AddGraphTypes(typeof(PlayerSchema).Assembly, ServiceLifetime.Singleton)
-                .AddGraphTypes(typeof(SkaterStatsSchema).Assembly, ServiceLifetime.Singleton)
-                .AddGraphTypes(typeof(LeagueSchema).Assembly, ServiceLifetime.Singleton);
+                .AddGraphTypes(typeof(PlayerQuery).Assembly, ServiceLifetime.Singleton)
+                .AddGraphTypes(typeof(GraphSchema<ObjectGraphType,ObjectGraphType>).Assembly, ServiceLifetime.Singleton)
+                .AddGraphTypes(typeof(SkaterStatsQuery).Assembly, ServiceLifetime.Singleton)
+                .AddGraphTypes(typeof(LeagueQuery).Assembly, ServiceLifetime.Singleton);
 
 
 
@@ -100,20 +101,20 @@ namespace NHLStats.Api
 
             app.UseCors("foo");
 
-            app.UseGraphQL<PlayerSchema>(path: "/hockey-player/graphql");
+            app.UseGraphQL<GraphSchema<PlayerQuery,PlayerMutation>>(path: "/hockey-player/graphql");
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions
             {
                 GraphQLEndPoint = "/hockey-player/graphql",
                 Path = "/hockey-player/playground",
             });
-            app.UseGraphQL<LeagueSchema>(path: "/league/graphql");
+            app.UseGraphQL<QueryGraphSchema<LeagueQuery>>(path: "/league/graphql");
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions
             {
                 GraphQLEndPoint = "/league/graphql",
                 Path = "/league/playground",
             });
 
-            app.UseGraphQL<SkaterStatsSchema>(path: "/stats/graphql");
+            app.UseGraphQL<QueryGraphSchema<SkaterStatsQuery>>(path: "/stats/graphql");
             app.UseGraphQLPlayground(new GraphQLPlaygroundOptions
             {
                 GraphQLEndPoint = "/stats/graphql",

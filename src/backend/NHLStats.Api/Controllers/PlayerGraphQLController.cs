@@ -4,6 +4,7 @@ using GraphQL;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NHLStats.Api.Models;
+using NHLStats.Core.Models;
 using NHLStats.Players.Data.GraphQL;
 using System;
 using System.Threading.Tasks;
@@ -14,9 +15,9 @@ namespace NHLStats.Api.Controllers
     public class PlayerGraphQLController : Controller
     {
         private readonly IDocumentExecuter _documentExecuter;
-        private readonly PlayerSchema _playerSchema;
+        private readonly GraphSchema<PlayerQuery,PlayerMutation> _playerSchema;
 
-        public PlayerGraphQLController(PlayerSchema playerSchema, IDocumentExecuter documentExecuter)
+        public PlayerGraphQLController(GraphSchema<PlayerQuery,PlayerMutation> playerSchema, IDocumentExecuter documentExecuter)
         {
             _playerSchema = playerSchema;
             _documentExecuter = documentExecuter;

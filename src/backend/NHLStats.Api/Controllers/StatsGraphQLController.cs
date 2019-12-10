@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using NHLStats.Api.Models;
 using NHLStats.Leagues.Data.GraphQL;
+using NHLStats.SkaterStats.Data.GraphQL;
 using System;
 using System.Threading.Tasks;
+using NHLStats.Core.Models;
 
 namespace NHLStats.Api.Controllers
 {
@@ -14,9 +16,9 @@ namespace NHLStats.Api.Controllers
     public class StatsGraphQLController : Controller
     {
         private readonly IDocumentExecuter _documentExecuter;
-        private readonly LeagueSchema _statsSchema;
+        private readonly QueryGraphSchema<SkaterStatsQuery> _statsSchema;
 
-        public StatsGraphQLController( LeagueSchema statsSchema, IDocumentExecuter documentExecuter)
+        public StatsGraphQLController( QueryGraphSchema<SkaterStatsQuery> statsSchema, IDocumentExecuter documentExecuter)
         {
             _statsSchema = statsSchema;
             _documentExecuter = documentExecuter;

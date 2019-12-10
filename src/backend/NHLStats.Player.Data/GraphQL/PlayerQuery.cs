@@ -16,7 +16,7 @@ namespace NHLStats.Players.Data.GraphQL
                 "randomPlayer",
                 resolve: context => contextServiceLocator.PlayerRepository.GetRandom());
 
-            Field<PlayerListType>(
+            Field<PagedListType<Player,PlayerType>>(
                 "playersList",
                 arguments: new QueryArguments(
                     new QueryArgument<IntGraphType> { Name = "pageSize" }, 
@@ -26,7 +26,7 @@ namespace NHLStats.Players.Data.GraphQL
                     context.GetArgument<int>("pageSize"), 
                     context.GetArgument<int>("page")));
 
-            Field<PlayerListType>(
+            Field<PagedListType<Player,PlayerType>>(
                 "playersListByName",
                 arguments: new QueryArguments(
                     new QueryArgument<StringGraphType> { Name = "playerName" },

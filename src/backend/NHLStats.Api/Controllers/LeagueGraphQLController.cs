@@ -7,6 +7,7 @@ using NHLStats.Api.Models;
 using NHLStats.Leagues.Data.GraphQL;
 using System;
 using System.Threading.Tasks;
+using NHLStats.Core.Models;
 
 namespace NHLStats.Api.Controllers
 {
@@ -14,9 +15,9 @@ namespace NHLStats.Api.Controllers
     public class LeagueGraphQLController : Controller
     {
         private readonly IDocumentExecuter _documentExecuter;
-        private readonly LeagueSchema _leagueSchema;
+        private readonly QueryGraphSchema<LeagueQuery> _leagueSchema;
 
-        public LeagueGraphQLController(LeagueSchema leagueSchema, IDocumentExecuter documentExecuter)
+        public LeagueGraphQLController(QueryGraphSchema<LeagueQuery> leagueSchema, IDocumentExecuter documentExecuter)
         {
             _leagueSchema = leagueSchema;
             _documentExecuter = documentExecuter;
